@@ -1,0 +1,44 @@
+<%- include('header.ejs') %>
+<body>
+  <div class="ui container-fluid">
+
+    <img src="https://static01.nyt.com/images/2018/08/01/dining/01Grocery1-alpha/01Grocery1-videoSixteenByNineJumbo1600-v4.jpg" style="height: 70vh;width: 100vw">
+      
+    <%- include('navbar.ejs') %>
+    <br />
+
+    <div class="text-center">
+      <h1 style="color:rgb(24, 112, 228); font-family: 'Josefin Sans', sans-serif;"><%- title %></h1>
+    </div>
+    <br></br>
+
+    <div class="row text-center">
+        <% for(var i=0; i<array.length ; i++) { %>
+
+            <div style="overflow-x:auto;background-color: bisque; display: inline-flex;width:100vw; margin-left: 2vw; margin-bottom:2vh; ">
+                <% for(var j=0; j<3 ; j++) { %>
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 18rem; margin:2vw;">
+                            <a>
+                                <img class="card-img-top" src="/<%- type %>/photos/<%- array[i]._id %>/<%- j %>" alt="No Image Available">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title"><%- label %> <%- array[i].photo[j].subCategory.name %></h5>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+
+                <div style="margin-top: 10vh;" class="card-body">
+                    <a href="/offer/editForm/<%- array[i]._id %>"class="card-link"><button  style="background-color: rgb(238, 238, 235); border-radius:10px ;"> Edit  </button></a>
+                    <a href="#" data-toggle="modal" data-target="#exampleModal<%- i %>" class="card-link"><button  style="margin-top: 3vh; background-color: rgb(238, 238, 235); border-radius:10px ;"> Delete  </button></a>
+                </div>
+                <%- include('deleteModal.ejs',{link: `/${type}/delete/${array[i]._id}`, Sno: i }) %>
+            </div>
+        <% } %>
+    </div>
+  </div>
+  <script src="/cart.js"></script>
+</body>
+          
+

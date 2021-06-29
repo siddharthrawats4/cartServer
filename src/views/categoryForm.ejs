@@ -1,0 +1,23 @@
+<%- include('header.ejs') %>
+
+<div class="ui container form">
+
+    <div class="text-center">
+        <h2 style="color:rgb(24, 112, 228); font-family: 'Josefin Sans', sans-serif;">Category Form</h2>
+    </div>
+
+    <form class="ui form" action="<%- link %>" method="post" enctype="multipart/form-data">
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%- name %>" /><br /><br />
+
+        <% for(var i=0; i < 1 ; i++) { %>
+
+            <label for="src[<%- i %>]">Upload an Image <%- i+1 %> </label>
+            <input type="file" id="src[<%- i %>]" name="src[<%- i %>]" accept="image/*" name="src[<%- i %>]" multiple="multiple" /><br /><br />
+
+        <% } %><br/><br/>
+        
+        <input class="ui button primary" type="submit" placeholder="click to submit" />
+    </form>
+</div>

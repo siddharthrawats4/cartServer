@@ -1,0 +1,89 @@
+<%- include('header.ejs') %>
+
+<div class="ui container text-center">
+
+    <div style="margin-bottom:4vh">
+        <h2 style="color:rgb(24, 112, 228); font-family: 'Josefin Sans', sans-serif;">Orders</h2>
+    </div>
+
+    <form class="ui form" action="/order/searchByOrder" method="post"  enctype="application/json">
+        <label>Order No.</label>
+        <input type="text" id="orderNo" name="orderNo" placeholder="Order No." />
+        <br/><br/>
+        <input class="ui button primary" type="submit" value="Search" />
+    </form>
+
+    <br/>
+
+    <form class="ui form" action="/order/searchByFilter" method="post"  enctype="application/json">
+        <div class="row">
+            <div class="col-2">
+                <input type="radio" id="all" name="all" value="all">
+                <label for="all">All</label><br>
+            </div>
+            <div class="col-2">
+                <input type="radio" id="delivered" name="delivered" value="Delivered">
+                <label for="delivered">Delivered</label><br>
+            </div>
+            <div class="col-2">
+                <input type="radio" id="request_return" name="request_return" value="Request Return">
+                <label for="request_return">All</label><br>
+            </div>
+            <div class="col-2">
+                <input type="radio" id="returning" name="returning" value="returning">
+                <label for="returning">Returning</label><br>
+            </div>
+            <div class="col-2">
+                <input type="radio" id="returned" name="returned" value="refunded">
+                <label for="returned">Returned</label><br>
+            </div>
+            
+            <div class="col-2">
+                <input type="radio" id="can" name="returned" value="refunded">
+                <label for="returned">Cancelled</label><br>
+            </div>
+        </div>
+      </form> 
+
+    <br/>
+
+    <div style="overflow-x:auto">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Order No.</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Total Products</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date of Purchase</th>
+                    <th scope="col">Change Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% for(var i=0;i<orders.length;i++) { %>
+                        <tr>
+                                <th scope="row"><%- i+1 %></th>
+                                <td>
+                                    <h5 style="color:black;"><%- orders[i].orderNo %></h5>
+                                </td>
+                                
+                                <td><%- orders[i].typeOfPayment %></td>
+                                <td><%- orders[i].products.length %></td>
+                                
+                                <td>₹<%- orders[i].amount %></td>
+                                <td><%- orders[i].createdAt %></td>
+                                <td>
+                                    <a href="/order/products/<%- orders[i]._id %>" style="outline:none" >
+                                        Click Here
+                                    </a>
+                                </td>
+                        </tr>
+                    
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+</div>

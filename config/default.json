@@ -1,0 +1,8 @@
+{
+    "db": "mongodb://localhost/cartServer",
+    "email": "admin@gmail.com",
+    "password": "123",
+    "company_email": "harshit.srivastava2001@gmail.com",
+    "company_password": "lenovo@12345",
+    "jwtPrivateKey": "test"
+}

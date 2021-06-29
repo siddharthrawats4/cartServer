@@ -1,0 +1,22 @@
+<%- include('header.ejs') %>
+
+<div class="ui container form">
+    <div class="text-center">
+        <br></br>
+        <h2 style="color:rgb(24, 112, 228); font-family: 'Josefin Sans', sans-serif;"><%- title %></h2>
+    </div>
+
+    <form class="ui form" action="<%- link %>" method="post" enctype="multipart/form-data">
+
+        <label>Upload an Image</label>
+        <input type="file" id="photo" name="photo" accept="image/*" value="<%- photo %>" name="Category" multiple="multiple" /><br /><br />
+        
+        <label><%- label %></label>
+        <select type="text" id="category" name="category" placeholder="category">
+            <% for(var x=0;x<array.length;x++) { %>
+                    <option value="<%- array[x]._id %>"><%- array[x].name %></option>
+            <% } %>
+        </select>
+        <input class="ui button primary" type="submit" placeholder="click to submit" />
+    </form>
+</div>

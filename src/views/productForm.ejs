@@ -1,0 +1,35 @@
+<%- include('header.ejs') %>
+
+<div class="ui container form">
+
+    <div class="text-center">
+        <h2 style="color:rgb(24, 112, 228); font-family: 'Josefin Sans', sans-serif;">Product Form</h2>
+    </div>
+
+    <form class="ui form" action="<%- link %>" method="post" enctype="multipart/form-data">
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%- name %>" /><br /><br />
+
+        <label for="description">Description</label>
+        <textarea type="text" id="description" name="description" value="<%- description %>"><%- description %></textarea><br /><br />
+
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" value="<%- price %>" /><br /><br />
+
+        <label for="stockQuantity">Total Quantity Available In Stock</label>
+        <input type="number" id="stockQuanitity" name="stockQuantity" value="<%- stockQuantity %>" /><br /><br />
+
+        <% for(var i=0; i < 4 ; i++) { %>
+
+            <label for="src[<%- i %>]">Upload an Image <%- i+1 %> </label>
+            <input type="file" id="src[<%- i %>]" name="src[<%- i %>]" accept="image/*" name="src[<%- i %>]" multiple="multiple" /><br /><br />
+
+        <% } %>
+        
+        <label for="discount">Discount (in %)</label>
+        <input type="text" id="discount" name="discount" value="<%- discount %>" /><br /><br />
+        
+        <input class="ui button primary" type="submit" placeholder="click to submit" />
+    </form>
+</div>

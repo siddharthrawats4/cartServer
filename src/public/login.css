@@ -1,0 +1,15 @@
+.modal-body {
+    margin-left: 6vw;
+    margin-right: 6vw;
+    margin-bottom: 1vw;
+  }
+  .head{
+      text-align: center;
+      padding: 1.5vw;
+  }
+  .modal-title{
+        margin-left: 3vw;
+  }
+  .btn{
+      margin-right: 50%;
+  }

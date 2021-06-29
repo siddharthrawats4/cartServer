@@ -1,0 +1,38 @@
+<%- include('header.ejs') %>
+
+<div class="ui container form">
+    <div class="text-center">
+        <br></br>
+        <h2 style="color:rgb(24, 112, 228); font-family: 'Josefin Sans', sans-serif;"><%- title %></h2>
+    </div>
+
+    <form class="ui form" action="<%- link %>" method="post" enctype="multipart/form-data">
+
+        <% for(var i=0; i < 3 ; i++) { %>
+
+            <label for="src<%- i+1 %>">Upload an Image <%- i+1 %> </label>
+            <input type="file" id="src<%- i+1 %>" name="src<%- i+1 %>" accept="image/*" name="src<%- i+1 %>" multiple="multiple" /><br /><br />
+            
+            <label>Choose subCategory for image<%- i+1 %>:</label>
+
+            <% if(flag===0) { %>
+                <select type="text" id="subCategory<%- i+1 %>" name="subCategory<%- i+1 %>" placeholder="subCategory-<%- i+1 %>">
+                    <% for(var x=0;x<array.length;x++) { %>
+                        <option value="<%- array[x]._id %>"><%- array[x].name %></option>
+                    <% } %>
+                </select>
+            <% } else { %>
+                <select type="text" id="subCategory<%- i+1 %>" name="subCategory<%- i+1 %>" placeholder="subCategory-<%- i+1 %>">
+                    <option value="<%- offer.photo[i].subCategory._id  %>"><%- offer.photo[i].subCategory.name %></option>
+                    <% for(var x=0;x<array.length;x++) { %>
+                        <% if(array[x].name != offer.photo[i].subCategory.name) { %>
+                            <option value="<%- array[x]._id %>"><%- array[x].name %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            <% } %>
+            <br/><br/>
+        <% } %>
+        <input class="ui button primary" type="submit" placeholder="click to submit" />
+    </form>
+</div>
